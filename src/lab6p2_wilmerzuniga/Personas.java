@@ -7,12 +7,12 @@ public class Personas {
     String Genero;
     String EstadoCivil;
     int Altura;
-    double Peso;
+    int Peso;
 
     public Personas() {
     }
 
-    public Personas(long Id, String Nombre, int Edad, String Genero, String EstadoCivil, int Altura, double Peso) {
+    public Personas(long Id, String Nombre, int Edad, String Genero, String EstadoCivil, int Altura, int Peso) {
         this.Id = Id;
         this.Nombre = Nombre;
         this.Edad = Edad;
@@ -74,7 +74,7 @@ public class Personas {
         return Peso;
     }
 
-    public void setPeso(double Peso) {
+    public void setPeso(int Peso) {
         this.Peso = Peso;
     }
 
