@@ -9,13 +9,6 @@ package lab6p2_wilmerzuniga;
  *
  * @author wilme
  */
-public class Lab6P2_WilmerZuniga {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Personita {
     
 }
