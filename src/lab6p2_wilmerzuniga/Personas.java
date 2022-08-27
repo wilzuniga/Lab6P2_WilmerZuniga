@@ -70,13 +70,15 @@ public class Personas {
         this.Altura = Altura;
     }
 
-    public double getPeso() {
+    public int getPeso() {
         return Peso;
     }
 
     public void setPeso(int Peso) {
         this.Peso = Peso;
     }
+
+
 
     @Override
     public String toString() {

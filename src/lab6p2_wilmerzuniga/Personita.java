@@ -50,7 +50,7 @@ public class Personita extends Personas{
         this.Semanas = Semanas;
     }
 
-    public double getSueldo() {
+    public int getSueldo() {
         return Sueldo;
     }
 
@@ -106,9 +106,7 @@ public class Personita extends Personas{
         this.Altura = Altura;
     }
 
-    public double getPeso() {
-        return Peso;
-    }
+    
 
     public void setPeso(int Peso) {
         this.Peso = Peso;

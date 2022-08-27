@@ -88,9 +88,11 @@ public class Gerente extends Personas{
         this.Altura = Altura;
     }
 
-    public double getPeso() {
+    public int getPeso() {
         return Peso;
     }
+
+
 
     public void setPeso(int Peso) {
         this.Peso = Peso;
