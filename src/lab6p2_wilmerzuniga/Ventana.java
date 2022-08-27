@@ -671,10 +671,6 @@ public class Ventana extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personas");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Gerente");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Gerente Sucursal");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Gerente planta");
-        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Personas normales");
         treeNode1.add(treeNode2);
@@ -750,6 +746,12 @@ public class Ventana extends javax.swing.JFrame {
                 listPersona.addRow(row);
                 jTable1.setModel(listPersona);
 
+                DefaultTreeModel m = (DefaultTreeModel) jTree1.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+                DefaultMutableTreeNode nodo_persona = new DefaultMutableTreeNode(coso.getNombre());
+                ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(nodo_persona);
+                m.reload();
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Algo Salio mal, intente de nuevo");
 
@@ -777,6 +779,12 @@ public class Ventana extends javax.swing.JFrame {
                 Object[] row = {coso.getNombre(), "Persona Normal"};
                 listPersona.addRow(row);
                 jTable1.setModel(listPersona);
+                
+                DefaultTreeModel m = (DefaultTreeModel) jTree1.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+                DefaultMutableTreeNode nodo_persona = new DefaultMutableTreeNode(coso.getNombre());
+                ((DefaultMutableTreeNode) raiz.getChildAt(1)).add(nodo_persona);
+                m.reload();
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Algo Salio mal, intente de nuevo");
@@ -786,12 +794,14 @@ public class Ventana extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Ingrese una opcion correcta");
         }
+        arbolito();
 
 
     }//GEN-LAST:event_BT_AgregarPersonaActionPerformed
 
     private void TabModifPersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabModifPersonaMouseClicked
         cargarComboboxModificar();
+        arbolito();
         System.out.println(PersonasList);
         TF_Altura.setText("");
         TF_Altura1.setText("");
@@ -912,10 +922,11 @@ public class Ventana extends javax.swing.JFrame {
 
     private void TabModifPersonaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabModifPersonaStateChanged
         DefaultTreeModel m = (DefaultTreeModel) jTree1.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
         for (Personas personas : PersonasList) {
             if (personas instanceof Personita) {
                 DefaultMutableTreeNode nodo_persona = new DefaultMutableTreeNode(personas.getNombre());
-                
+                ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(nodo_persona);
 
             }
         }
@@ -972,6 +983,22 @@ public class Ventana extends javax.swing.JFrame {
             //System.out.println(pers.toString());
         }
         CB_Modificar.setModel(m);
+    }
+
+    private void arbolito() {
+        DefaultTreeModel m = (DefaultTreeModel) jTree1.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+
+        if (personas instanceof Personita) {
+            DefaultMutableTreeNode nodo_persona = new DefaultMutableTreeNode(personas.getNombre());
+            ((DefaultMutableTreeNode) raiz.getChildAt(1)).add(nodo_persona);
+
+        } else {
+            DefaultMutableTreeNode nodo_persona = new DefaultMutableTreeNode(personas.getNombre());
+            ((DefaultMutableTreeNode) raiz.getChildAt(0)).add(nodo_persona);
+
+        }
+        m.reload();
     }
 
     //Mis Variables
